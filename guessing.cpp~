@@ -1,0 +1,41 @@
+#include <iostream>
+
+using namespace std;
+int main()
+{
+  srand(time(NULL));
+
+  
+  char playagain = 'y'; //variable that tracks whether the player wants to play again
+  int playerguess = 0; //variable to store the player's guess 
+  while (playagain == 'y')
+  {
+    
+    int randomnumber = rand() % 101;//from stack overflow https://stackoverflow.com/questions/1202687/how-do-i-get-a-specific-range-of-numbers-from-rand
+    int playertries = 0; //number of times the player has tried
+    bool playercorrect = false; //variable that keeps track of whether player has guessed correctly
+    while(playercorrect == false)
+      {
+	cout << '\n' << "Guess an integer between 0 and 100" << '\n';
+	cin >> playerguess; //takes in the player's guess
+	playertries++; //adds 1 to number of tries each time the player guesses
+	if(playerguess == randomnumber)
+	  {
+	    cout << '\n' << playerguess << " is correct!" << endl;
+	    cout << '\n' << "you took " << playertries << " tries" << endl; 
+	    playercorrect = true;
+	  }
+	else if(playerguess < randomnumber)
+	  {
+	    cout << playerguess << " is too low" << endl;
+	  }
+	else
+	  {
+	    cout << playerguess << " is too high" << endl;
+	  }
+      }
+    cout << "would you like to play again? Please answer y(yes) or n(no) " << '\n' << endl;
+    cin >> playagain;
+  }
+  return 0;
+}
